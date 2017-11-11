@@ -2,15 +2,25 @@ package greeter.service;
 
 import java.util.List;
 import java.util.ArrayList;
+import org.springframework.stereotype.Component;
 
+import greeter.response.Language;
+
+@Component
 public class TranslatorServiceImpl implements TranslatorService
 {
-   public List<String> languages() {
-      List<String> languages = new ArrayList<>();
+   public List<Language> languages() {
+      List<Language> languages = new ArrayList<>();
       
-      languages.add("English");
-      languages.add("Chinese");
+      Language language = new Language();
+      language.setName("English");
+      languages.add(language);
+   
+      language = new Language();
+      language.setName("Chinese");
+      languages.add(language);
 
       return languages;
    }
+
 }

@@ -10,6 +10,7 @@ import org.junit.Before;
 
 import greeter.service.TranslatorService;
 import greeter.service.TranslatorServiceImpl;
+import greeter.response.Language;
 
 public class TranslatorServiceImplTest
 {
@@ -24,16 +25,23 @@ public class TranslatorServiceImplTest
    @Test
    public void shouldReturnAListOfLanguages() {
       // given
-      List<String> expected = new ArrayList<>();
-      expected.add("Chinese");
-      expected.add("English");
+      List<Language> expected = new ArrayList<>();
+      
+      Language language = new Language();
+      language.setName("Chinese");
+      expected.add(language);
+
+      language = new Language();
+      language.setName("English");
+      expected.add(language);
 
       // when
-      List<String> actual = translatorService.languages();
+      List<Language> actual = translatorService.languages();
 
       // then
       assertEquals(actual.size(), 2);
-      assertTrue(actual.containsAll(expected));
+      assertEquals(actual.get(0).getName(), "English");
+      assertEquals(actual.get(1).getName(), "Chinese");
    }
 
 }

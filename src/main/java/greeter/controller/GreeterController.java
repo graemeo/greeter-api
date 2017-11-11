@@ -25,8 +25,10 @@ public class GreeterController {
    }
 
    @RequestMapping("/languages")
-   public List<Language> getLanguages() {
-      return greeterServiceImpl.getLanguages();
+   public ResponseEntity<List<Language>> getLanguages() {
+      List<Language> languages = greeterServiceImpl.getLanguages();
+
+      return new ResponseEntity<List<Language>>(languages, HttpStatus.OK);
    }
 
 }

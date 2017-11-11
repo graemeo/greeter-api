@@ -1,8 +1,9 @@
 package greeter.controller;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.mockito.Mockito.when;
 
@@ -45,7 +46,6 @@ public class GreeterControllerTest {
          .andExpect(content().string(equalTo("Hello there!")));
    }
 
-   @Ignore
    @Test
    public void shouldReturnSuccessfulResponseWhenGettingLanguages() throws Exception {
       // given
@@ -66,7 +66,8 @@ public class GreeterControllerTest {
       mockMvc.perform(MockMvcRequestBuilders.get("/languages"))
          .andDo(print())
          .andExpect(status().isOk())
-         .andExpect(content().string(equalTo("")));
+         .andExpect(jsonPath("$[0].name", is("Spanish")))
+         .andExpect(jsonPath("$[1].name", is("Japanese")));
    }
 
 }

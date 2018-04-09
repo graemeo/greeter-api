@@ -33,3 +33,7 @@ task hello {
    }
 }
 
+bootRun {
+   jvmArgs = ["-Dcom.sun.management.jmxremote", "-XX:+PrintGCDetails", "-XX:+PrintGCDateStamps", "-Xloggc:gclog.log"]
+}
+

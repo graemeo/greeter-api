@@ -2,7 +2,7 @@
 
 # Description
 
-Simple API to demonstrate the use of SpringBoot.
+Simple API to demonstrate the use of Spring Boot.
 
 # Pre-requisite(s)
 

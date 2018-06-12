@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: greeter-api-deployment
+    labels:
+        app: greeter-api
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            app: greeter-api
+    template:
+        metadata:
+            labels:
+                app: greeter-api
+        spec:
+            containers:
+            - name: greeter-api-container
+              image: greeter-api:v1
+              ports:
+              - containerPort: 8181
